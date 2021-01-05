@@ -15,10 +15,10 @@
 FROM python:3.7.4-slim
 RUN mkdir -p /opt/microservices/
 
-COPY requirements.txt /opt/microservices/
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY test-requirements.txt /opt/microservices/
+COPY test-requirements.txt ./
 RUN pip install --no-cache-dir -r test-requirements.txt
 
 COPY productpage.py /opt/microservices/
