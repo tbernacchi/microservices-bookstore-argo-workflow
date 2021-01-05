@@ -15,7 +15,7 @@
 FROM python:3.7.4-slim
 
 RUN mkdir -p /opt/microservices/
-ADD . /opt/microservices/
+COPY requirements.txt test-requirements.txt productpage.py tests/unit/* templates static /opt/microservices/
 RUN pip install --no-cache-dir -r requirements.txt
 
 RUN pip install --no-cache-dir -r test-requirements.txt
