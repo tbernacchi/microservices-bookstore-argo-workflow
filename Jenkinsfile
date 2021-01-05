@@ -1,28 +1,16 @@
 pipeline {
-    agent {
-
-    dockerfile true 
-
     environment {
         registry = "tadeuuuuu/infra-developer"
-        #GOCACHE = "/tmp"
     }
+    agent { dockerfile true }
     stages {
         stage('Build') {
-              
+            steps {
+                sh 'node --version'
+                sh 'svn --version'
+            }
         }
-
-    agent {
-    // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
-    dockerfile {
-        filename './productpage/Dockerfile'
-        dir 'build'
-        label 'my-defined-label'
-        additionalBuildArgs  '--build-arg version=1.0.0'
-        args '-v /tmp:/tmp'
-      }
-    }
-
+    
     stage('Publish') {
       environment {
         registryCredential = 'dockerhub'
@@ -39,3 +27,4 @@ pipeline {
     }
   }
 }
+
