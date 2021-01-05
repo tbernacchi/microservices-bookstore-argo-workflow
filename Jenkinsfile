@@ -6,8 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'node --version'
-                sh 'svn --version'
+                sh 'cd productpage'
             }
         }
     
