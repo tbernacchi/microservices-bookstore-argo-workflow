@@ -14,17 +14,11 @@
 
 FROM python:3.7.4-slim
 
-COPY requirements.txt ./
+RUN mkdir -p /opt/microservices/
+COPY * /opt/microservices/
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY test-requirements.txt ./
 RUN pip install --no-cache-dir -r test-requirements.txt
-
-COPY productpage.py /opt/microservices/
-COPY tests/unit/* /opt/microservices/
-COPY templates /opt/microservices/templates
-COPY static /opt/microservices/static
-COPY requirements.txt /opt/microservices/
 
 ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
