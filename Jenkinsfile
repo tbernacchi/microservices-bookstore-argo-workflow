@@ -4,13 +4,13 @@ pipeline {
     }
     agent { 
       dockerfile { 
-      filename "productpage/Dockerfile"
+      filename "frontend/Dockerfile"
       }
     } 
     stages {
         stage('Build') {
             steps {
-                sh 'cd productpage'
+                sh 'echo $HOME'
             }
         }
     
