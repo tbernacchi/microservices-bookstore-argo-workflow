@@ -4,7 +4,7 @@ RUN mkdir -p /app
 WORKDIR /app/
 COPY . /app/
 
-RUN pip freeze > requirements.txt
+RUN pip3 freeze > /app/src/frontend/requirements.txt
 
 RUN pip3 install -r /app/src/frontend/requirements.txt && chmod a+rwx /app/src/frontend/frontend.py
 
