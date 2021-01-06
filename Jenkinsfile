@@ -9,4 +9,12 @@ pipeline {
       filename "productpage/Dockerfile"
       }
     } 
-}
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo $HOME'
+            }
+        }
+    }
+} 
