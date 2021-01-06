@@ -16,7 +16,7 @@ FROM websphere-liberty:19.0.0.6-javaee8
 
 ENV SERVERDIRNAME reviews
 
-ADD ./servers/LibertyProjectServer /opt/ibm/wlp/usr/servers/defaultServer/
+ADD . /opt/ibm/wlp/usr/servers/defaultServer/
 
 RUN /opt/ibm/wlp/bin/installUtility install  --acceptLicense /opt/ibm/wlp/usr/servers/defaultServer/server.xml
 
