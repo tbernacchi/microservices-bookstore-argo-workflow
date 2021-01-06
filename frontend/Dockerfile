@@ -1,8 +1,8 @@
 FROM python:3.7-slim
 
-RUN mkdir -p /app 
+RUN mkdir -p /app/src/frontend/
 WORKDIR /app/
-COPY . /app/
+COPY . /app/src/frontend
 
 RUN pip3 freeze > /app/src/frontend/requirements.txt
 
