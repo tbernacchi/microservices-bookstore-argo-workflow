@@ -4,7 +4,7 @@ pipeline {
     }
     agent { 
       dockerfile { 
-      filename "details/Dockerfile"
+      filename "reviews/reviews-wlpcfg/Dockerfile"
       }
     } 
     
