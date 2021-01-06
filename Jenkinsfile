@@ -4,7 +4,6 @@ pipeline {
     }
     agent { 
       dockerfile { 
-      filename "details/Dockerfile"
       filename "productpage/Dockerfile"
       }
     } 
@@ -12,7 +11,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo $HOME'
+                sh 'env'
             }
         }
     }
