@@ -10,9 +10,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo $HOME'
+                sh 'echo oiii'
             }
         }
-  }
-}
-
+    }
+} 
