@@ -4,7 +4,7 @@ pipeline {
     }
     agent { 
       dockerfile { 
-      filename "frontend/Dockerfile"
+      filename "productpage/Dockerfile"
       }
     } 
     stages {

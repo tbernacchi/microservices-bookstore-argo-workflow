@@ -11,25 +11,21 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-
 FROM python:3.7.4-slim
+
 RUN mkdir -p /opt/microservices/
 
-COPY requirements.txt ./
+ADD ./productpage /opt/microservices
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY test-requirements.txt ./
 RUN pip install --no-cache-dir -r test-requirements.txt
-
-COPY productpage.py /opt/microservices/
-COPY tests/unit/* /opt/microservices/
-COPY templates /opt/microservices/
-COPY static /opt/microservices/
 
 ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
 
 EXPOSE 9080
+
 WORKDIR /opt/microservices
 RUN python -m unittest discover
 
