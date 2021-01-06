@@ -17,9 +17,9 @@ RUN mkdir -p /opt/microservices/
 
 ADD ./productpage /opt/microservices
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt
 
-RUN pip install --no-cache-dir -r test-requirements.txt
+RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt
 
 ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
