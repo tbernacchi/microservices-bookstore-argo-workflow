@@ -13,9 +13,7 @@
 #   limitations under the License.
 
 FROM node:12.9.0-slim
-
-COPY package.json /opt/microservices/
-COPY ratings.js /opt/microservices/
+ADD . /opt/microservices/
 WORKDIR /opt/microservices
 RUN npm install
 
