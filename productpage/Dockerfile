@@ -25,7 +25,7 @@ ENV FLOOD_FACTOR ${flood_factor:-0}
 EXPOSE 9080
 WORKDIR /opt/microservices
 
-RUN python -m unittest -p productpage/tests/unit/tesproductpage.py
+RUN python -m unittest discovery 
 
 USER 1
 
