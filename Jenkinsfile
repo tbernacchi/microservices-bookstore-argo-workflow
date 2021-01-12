@@ -11,7 +11,7 @@ pipeline {
                  image 'python:3.7.4-slim' 
             } }
             steps {
-                  sh 'sudo -H pip install --user --no-cache-dir -r productpage/test-requirements.txt'
+                  sh '/usr/bin/sudo -H pip install --user --no-cache-dir -r productpage/test-requirements.txt'
                   sh 'python -m unittest discover tests/unit'
             }
         }
