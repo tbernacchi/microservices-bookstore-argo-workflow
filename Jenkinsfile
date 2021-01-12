@@ -11,11 +11,11 @@ pipeline {
                  image 'python:3.7.4-slim' 
             } }
             steps {
-                  sh '/usr/bin/sudo -H pip install virtualenv'
+                  sh 'sudo -H pip install virtualenv'
                   sh 'cd productpage'
                   sh 'virtualenv productpage' 
                   sh 'source productpage/bin/activate'
-                  sh '/usr/bin/sudo -H pip install --user --no-cache-dir -r productpage/test-requirements.txt'
+                  sh 'sudo -H pip install --user --no-cache-dir -r productpage/test-requirements.txt'
                   sh 'python -m unittest discover tests/unit'
                   sh 'deactivate'
             }
