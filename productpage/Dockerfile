@@ -15,7 +15,7 @@
 FROM python:3.7.4-slim
 
 RUN mkdir -p /opt/microservices 
-ADD . /opt/microservices/ 
+ADD productpage /opt/microservices/ 
 RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt && apt update -y && apt install -y curl 
 RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt
 
