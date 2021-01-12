@@ -11,7 +11,7 @@ pipeline {
                  image 'python:3.7.4-slim' 
             } }
             steps {
-                  sh 'pip install virtualenv'
+                  sh 'sudo -H pip install virtualenv'
                   sh 'cd productpage'
                   sh 'virtualenv productpage' 
                   sh 'source productpage/bin/activate'
