@@ -11,7 +11,6 @@ pipeline {
                  image 'python:3.7.4-slim' 
             } }
             steps {
-                  sh 'sudo su jenkins'
                   sh 'sudo -H pip install virtualenv'
                   sh 'cd productpage'
                   sh 'virtualenv productpage' 
