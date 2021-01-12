@@ -11,7 +11,7 @@ pipeline {
                  image 'python:3.7.4-slim' 
             } }
             steps {
-                  sh 'pip install --user jenkins --no-cache-dir -r productpage/test-requirements.txt'
+                  sh 'pip install --user -r productpage/test-requirements.txt --no-cache-dir'
                   sh 'python -m unittest discover tests/unit'
             }
         }
