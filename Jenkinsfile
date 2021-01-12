@@ -8,7 +8,7 @@ pipeline {
             agent { 
               docker {
                  image 'python:3.7.4-slim' 
-             } }
+            } }
             steps {
                   sh 'pip install -r productpage/test-requirements.txt'
                   sh 'python -m unittest discover tests/unit'
@@ -19,7 +19,7 @@ pipeline {
             agent { 
               docker {
                  image 'python:3.7.4-slim' 
-           } }
+            } }
             steps {
                   sh 'echo olaaa build'
             }
@@ -37,7 +37,5 @@ pipeline {
                 sh 'echo Aqui tenho que fazer um kubectl get health sei la'
             }
         }
-        }
-        }
-    }  
-} 
+    }
+}
