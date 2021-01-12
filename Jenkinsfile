@@ -12,6 +12,7 @@ pipeline {
             } }
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) { 
+                  sh 'pip install --user -r requirements.txt --no-cache-dir' 
                   sh 'pip install --user -r productpage/test-requirements.txt --no-cache-dir'
                   sh 'python -m unittest discover productpage/tests/unit'
             }} 
