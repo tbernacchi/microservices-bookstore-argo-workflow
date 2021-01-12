@@ -12,7 +12,7 @@ pipeline {
             } }
             steps {
                   sh 'pip install virtualenv'
-                  sh 'productpage'
+                  sh 'cd productpage'
                   sh 'virtualenv productpage' 
                   sh 'source productpage/bin/activate'
                   sh 'pip install --user --no-cache-dir -r productpage/test-requirements.txt'
