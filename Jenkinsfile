@@ -2,19 +2,39 @@ pipeline {
     environment {
         registry = "tadeuuuuu/infra-developer"
     }
-    agent { 
-      dockerfile { 
-      filename "productpage/Dockerfile"
-      filename "reviews/reviews-wlpcfg/Dockerfile"
-      filename "details/Dockerfile"
-      filename "ratings/Dockerfile"
-      }
-    } 
     
     stages {
-        stage('Build') {
+        stage('Test') {
+            agent { 
+              docker {
+                 image 'python:3.7.4-slim' 
+              }
             steps {
-                sh 'env'
+                  sh 'pip install -r productpage/test-requirements.txt'
+                  sh 'python -m unittest discover tests/unit'
+            }
+        }
+        
+        stage('Build') {
+            agent { 
+              docker {
+                 image 'python:3.7.4-slim' 
+            }
+            steps {
+                  sh 'echo olaaa build'
+            }
+        }
+
+        stage('Publish') {
+            steps {
+                sh 'echo olaa publish'
+            }
+        }
+        
+        stage('Deploy') {
+            steps {
+                sh 'echo olaaa'
+                sh 'echo Aqui tenho que fazer um kubectl get health sei la'
             }
         }
     }
