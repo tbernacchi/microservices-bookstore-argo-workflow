@@ -10,7 +10,9 @@ pipeline {
         agent {
           dockerfile {
             filename "productpage/Dockerfile"
-            }
+          }}
+          steps {
+            sh 'echo testing'
           }
         }
         
