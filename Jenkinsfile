@@ -11,10 +11,10 @@ pipeline {
                  image 'python:3.7.4-slim' 
             } }
             steps {
-                withEnv(["HOME=${env.WORKSPACE}"]) 
+                withEnv(["HOME=${env.WORKSPACE}"]) { 
                   sh 'pip install --user -r productpage/test-requirements.txt --no-cache-dir'
                   sh 'python -m unittest discover tests/unit'
-            }
+            }} 
         }
         
         stage('Build') {
