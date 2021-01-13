@@ -42,5 +42,4 @@ pipeline {
                 sh 'echo Aqui tenho que fazer um kubectl get health sei la'
             }
         }
-    }
-}
+  }
