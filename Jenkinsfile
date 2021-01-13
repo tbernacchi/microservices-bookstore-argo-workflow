@@ -18,12 +18,12 @@ pipeline {
         
         stage('Build') {
           steps { 
-            sh '''#!/bin/bash
-              "docker build --file=productpage/Dockerfile" --tag registry + ":$BUILD_NUMBER" ."
-              "docker build --file=ratings/Dockerfile --tag registry + ":$BUILD_NUMBER" ." 
-              "docker build --file=details/Dockerfile --tag registry + ":$BUILD_NUMBER" ."
-              "docker build --file=mysql/Dockerfile --tag registry + ":$BUILD_NUMBER" ."
-              '''
+            sh """#!/bin/bash
+              "docker build --file="productpage/Dockerfile" --tag registry + ":$BUILD_NUMBER" ."
+              "docker build --file="ratings/Dockerfile"--tag registry + ":$BUILD_NUMBER" ." 
+              "docker build --file="details/Dockerfile" --tag registry + ":$BUILD_NUMBER" ."
+              "docker build --file="mysql/Dockerfile" --tag registry + ":$BUILD_NUMBER" ."
+              """
           } 
         }
 
