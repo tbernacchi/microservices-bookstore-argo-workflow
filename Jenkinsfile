@@ -19,14 +19,14 @@ pipeline {
         stage('Build') {
           steps { 
             sh '''#!/bin/bash
-              docker build productpage/Dockerfile --tag registry + ":$BUILD_NUMBER"
+              docker build productpage/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
               cd reviews/
               docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build
               cd ..
-              docker build reviews/reviews-wlpcfg/Dockerfile --tag registry + ":$BUILD_NUMBER"
-              docker build ratings/Dockerfile --tag registry + ":$BUILD_NUMBER"
-              docker build details/Dockerfile --tag registry + ":$BUILD_NUMBER"
-              docker build mysql/Dockerfile --tag registry + ":$BUILD_NUMBER"
+              docker build reviews/reviews-wlpcfg/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
+              docker build ratings/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
+              docker build details/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
+              docker build mysql/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
               '''
           } 
         }
