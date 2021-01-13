@@ -12,21 +12,21 @@ pipeline {
             filename "productpage/Dockerfile"
           }}
           steps {
-            sh 'echo testing'
+            sh 'echo Test'
           }
         }
         
         stage('Build') {
           steps { 
             sh '''#!/bin/bash
-              docker build --file="productpage/Dockerfile" --tag registry + ":$BUILD_NUMBER" 
+              docker build --file=productpage/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
               cd reviews/
-              docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build
+              docker run --rm -u root -v \"$(pwd)\":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build 
               cd ..
-              docker build --file="reviews/reviews-wlpcfg/Dockerfile" --tag registry + ":$BUILD_NUMBER"  
-              docker build --file="ratings/Dockerfile" --tag registry + ":$BUILD_NUMBER" 
-              docker build --file="details/Dockerfile" --tag registry + ":$BUILD_NUMBER" 
-              docker build --file="mysql/Dockerfile" --tag registry + ":$BUILD_NUMBER"  
+              docker build --file=reviews/reviews-wlpcfg/Dockerfile --tag registry + ":$BUILD_NUMBER" .
+              docker build --file=ratings/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
+              docker build --file=details/Dockerfile --tag registry + ":$BUILD_NUMBER" .
+              docker build --file=mysql/Dockerfile --tag registry + ":$BUILD_NUMBER" . 
               '''
           } 
         }
