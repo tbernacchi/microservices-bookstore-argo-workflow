@@ -19,6 +19,7 @@ pipeline {
         stage('Build') {
           steps { 
             sh """#!/bin/bash
+              "cd /var/jenkins_home/workspace/infra-dev" 
               "docker build --file="productpage/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
               "docker build --file="ratings/Dockerfile" --tag "$registry:$BUILD_NUMBER" ." 
               "docker build --file="details/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
