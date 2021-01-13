@@ -19,7 +19,7 @@ pipeline {
         stage('Build') {
           steps { 
             sh """#!/bin/bash
-              "echo `pwd` > pwd.txt" 
+              echo `pwd` > pwd.txt
               """
           } 
         }
