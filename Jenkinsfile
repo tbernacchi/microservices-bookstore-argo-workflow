@@ -19,7 +19,10 @@ pipeline {
         stage('Build') {
           steps { 
             sh """#!/bin/bash
-              echo `pwd` > pwd.txt
+              "docker build --file="productpage/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
+              "docker build --file="ratings/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
+              "docker build --file="details/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
+              "docker build --file="mysql/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
               """
           } 
         }
