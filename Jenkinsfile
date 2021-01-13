@@ -20,11 +20,11 @@ pipeline {
           steps { 
             sh "pwd"
             sh "ls -la" 
-            sh "docker build --file=productpage/Dockerfile --tag $registry:productpage-$BUILD_NUMBER ."
-            sh "docker build --file=ratings/Dockerfile --tag $registry:ratings-$BUILD_NUMBER ."
-            sh "docker build --file=details/Dockerfile --tag $registry:details-$BUILD_NUMBER ."
-            sh "docker build --file=mysql/Dockerfile --tag $registry:mysql-$BUILD_NUMBER mysql"
-            sh "docker run --rm -u root -v reviews:/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build"
+            sh "cd reviews/" 
+            sh "pwd"
+            sh "ls -la" 
+            sh "docker run --rm -u root -v `pwd`:/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build"
+            sh "cd .." 
             sh "docker build --file=reviews/reviews-wlpcfg/Dockerfile --tag $registry:reviews-$BUILD_NUMBER reviews/reviews-wlpcfg"
           } 
         }
