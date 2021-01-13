@@ -18,6 +18,8 @@ pipeline {
         
         stage('Build') {
           steps { 
+            sh "pwd"
+            sh "ls -la" 
             sh "docker run --rm -u root -v reviews:/home/gradle/project -w /home/gradle/project gradle gradle clean build"
             sh "docker build --file=reviews/reviews-wlpcfg/Dockerfile --tag $registry:reviews-$BUILD_NUMBER reviews/reviews-wlpcfg"
           } 
