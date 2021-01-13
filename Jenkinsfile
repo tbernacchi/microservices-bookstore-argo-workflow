@@ -17,49 +17,16 @@ pipeline {
         }
         
         stage('Build') {
-            agent { 
-              docker {
-                 image 'python:3.7.4-slim' 
-            } }
-            steps {
-                  sh 'docker build productpage/Dockerfile --tag registry + ":$BUILD_NUMBER"'
+          sh """#!/bin/bash
+            docker build productpage/Dockerfile --tag registry + ":$BUILD_NUMBER"'
+            cd reviews/'
+            docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build'
+            cd ..
+            docker build reviews/reviews-wlpcfg/Dockerfile --tag registry + ":$BUILD_NUMBER"'
+            docker build ratings/Dockerfile --tag registry + ":$BUILD_NUMBER"'
+            docker build details/Dockerfile --tag registry + ":$BUILD_NUMBER"'
+            docker build mysql/Dockerfile --tag registry + ":$BUILD_NUMBER"'
             }
-
-            agent { 
-              docker {
-                 image 'websphere-liberty:19.0.0.6-javaee8' 
-            } }
-            steps {
-                  sh 'cd reviews/'
-                  sh 'docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build'
-                  sh 'cd ..'
-                  sh 'docker build reviews/reviews-wlpcfg/Dockerfile --tag registry + ":$BUILD_NUMBER"'
-            }
-            
-            agent { 
-              docker {
-                 image 'node:12.9.0-slim' 
-            } }
-            steps {
-                  sh 'docker build ratings/Dockerfile --tag registry + ":$BUILD_NUMBER"'
-            }
-            
-            agent { 
-              docker {
-                 image 'ruby:2.7-rc-slim' 
-            } }
-            steps {
-                  sh 'docker build details/Dockerfile --tag registry + ":$BUILD_NUMBER"'
-            }
-            
-            agent { 
-              docker {
-                 image 'mysql:8.0.17' 
-            } }
-            steps {
-                  sh 'docker build mysql/Dockerfile --tag registry + ":$BUILD_NUMBER"'
-            }
-
         }
 
         stage('Publish') {
