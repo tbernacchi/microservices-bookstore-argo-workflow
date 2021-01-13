@@ -25,7 +25,7 @@ pipeline {
             sh "docker build --file=details/Dockerfile --tag $registry:details-$BUILD_NUMBER ."
             sh "docker build --file=mysql/Dockerfile --tag $registry:mysql-$BUILD_NUMBER mysql"
             sh "cd reviews/"
-            sh "docker run --rm -u root -v \"$(pwd)\":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build"
+            sh "docker run --rm -u root -v `pwd`:/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build"
             sh "cd .."
             sh "docker build --file=reviews/reviews-wlpcfg/Dockerfile --tag $registry:reviews-$BUILD_NUMBER reviews/reviews-wlpcfg"
           } 
