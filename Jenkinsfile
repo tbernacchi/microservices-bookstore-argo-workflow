@@ -19,25 +19,20 @@ pipeline {
         stage('Build') {
           steps { 
             sh """#!/bin/bash
-              "cd /var/jenkins_home/workspace/infra-dev" 
-              "docker build --file="productpage/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
-              "docker build --file="ratings/Dockerfile" --tag "$registry:$BUILD_NUMBER" ." 
-              "docker build --file="details/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
-              "docker build --file="mysql/Dockerfile" --tag "$registry:$BUILD_NUMBER" ."
+              "echo `pwd` > pwd.txt" 
               """
           } 
         }
 
         stage('Publish') {
             steps {
-                sh 'echo olaa publish'
+                sh 'echo Publish'
             }
         }
         
         stage('Deploy') {
             steps {
-                sh 'echo olaaa'
-                sh 'echo Aqui tenho que fazer um kubectl get health sei la'
+                sh 'echo Deploy'
             }
         }
     }
