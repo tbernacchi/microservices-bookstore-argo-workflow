@@ -23,6 +23,7 @@ pipeline {
             sh "docker build --file=details/Dockerfile --tag $registry:details-$BUILD_NUMBER ."
             sh "docker build --file=mysql/Dockerfile --tag $registry:mysql-$BUILD_NUMBER mysql"
             sh "docker build --file=reviews/reviews-wlpcfg/Dockerfile --tag $registry:reviews-$BUILD_NUMBER reviews/reviews-wlpcfg"
+            "sh "cd ~jenkins/workspace/infra-dev/reviews/ && /opt/gradle/gradle-4.8.1/bin/gradle -u gradle clean build && cd .."
           } 
         }
 
