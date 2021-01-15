@@ -35,9 +35,18 @@ pipeline {
         }
 
         stage('Publish') {
-            steps {
-                sh 'echo Publish'
+          environment {
+            registryCredential = 'dockerhub'
+          }
+          steps{
+            script {
+                def appimage = docker.build registry + ":$BUILD_NUMBER"
+                docker.withRegistry( '', registryCredential ) {
+                    appimage.push()
+                    appimage.push('latest')
+                }
             }
+          }
         }
         
         stage('Deploy') {
