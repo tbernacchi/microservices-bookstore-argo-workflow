@@ -41,15 +41,15 @@ pipeline {
           }
           steps{
             script {
+                docker.withRegistry( '', registryCredential )
                 sh """#!/bin/bash
-                      docker.withRegistry( '', registryCredential ) {
                         for i in `echo $app`;do 
                         docker push $registry:$i-$BUILD_NUMBER
-                      done"""               
+                      done
+                   """            
                 }
             }
           }
-        }
         
         stage('Deploy') {
             steps {
