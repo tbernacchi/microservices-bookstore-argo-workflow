@@ -37,12 +37,12 @@ pipeline {
         stage('Publish') {
           environment {
               registryCredential = 'dockerhub'
-              app = 'productpage ratings details mysql reviews'
           }
           steps{
                 script { 
                 docker.withRegistry( '', registryCredential ) {  
                   sh """#!/bin/bash
+                        app = "productpage ratings details mysql reviews"
                         for i in `echo $app`;do 
                           docker push $registry:$i-$BUILD_NUMBER
                         done
