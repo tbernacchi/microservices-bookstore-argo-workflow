@@ -36,14 +36,15 @@ pipeline {
 
         stage('Publish') {
           environment {
-            registryCredential = 'dockerhub'
+              registryCredential = 'dockerhub'
+              app = 'productpage ratings details mysql reviews'
           }
           steps{
             script {
-                def appimage = docker.build registry + ":$BUILD_NUMBER"
                 docker.withRegistry( '', registryCredential ) {
-                    appimage.push()
-                    appimage.push('latest')
+                  for i in `echo $app`;do 
+                    docker push $registry:$i-$BUILD_NUMBER
+                  done                  
                 }
             }
           }
