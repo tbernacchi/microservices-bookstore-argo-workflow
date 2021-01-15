@@ -41,10 +41,11 @@ pipeline {
           }
           steps{
             script {
-                docker.withRegistry( '', registryCredential ) {
-                  for i in `echo $app`;do 
-                    docker push $registry:$i-$BUILD_NUMBER
-                  done                  
+                sh """#!/bin/bash
+                      docker.withRegistry( '', registryCredential ) {
+                        for i in `echo $app`;do 
+                        docker push $registry:$i-$BUILD_NUMBER
+                      done"""               
                 }
             }
           }
