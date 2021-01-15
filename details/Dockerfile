@@ -14,9 +14,7 @@
 
 FROM ruby:2.7-rc-slim
 
-RUN mkdir -p /opt/microservices/
-
-ADD . /opt/microservices/
+COPY details.rb /opt/microservices/
 
 ARG service_version
 ENV SERVICE_VERSION ${service_version:-v1}
