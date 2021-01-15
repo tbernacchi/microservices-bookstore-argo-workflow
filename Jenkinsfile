@@ -24,6 +24,7 @@ pipeline {
         
         stage('Build') {
           steps { 
+            sh 'ls -la productpage/'
             sh "docker build --file=productpage/Dockerfile --tag $registry:productpage-$BUILD_NUMBER ."
             sh "docker build --file=ratings/Dockerfile --tag $registry:ratings-$BUILD_NUMBER ."
             sh "docker build --file=details/Dockerfile --tag $registry:details-$BUILD_NUMBER ."
