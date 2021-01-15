@@ -14,15 +14,20 @@
 FROM python:3.7.4-slim
 
 RUN mkdir -p /opt/microservices && mkdir -p /opt/microservices/tests/unit
-ADD . /opt/microservices/
+COPY requirements.txt /opt/microservices/
 RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt && apt update -y && apt install -y curl
 
 ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
 
-ADD tests/unit /opt/microservices/tests/unit
 COPY test-requirements.txt /opt/microservices
 RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt 
+
+COPY productpage.py /opt/microservices/
+COPY tests/unit/* /opt/microservices/tests/unit
+COPY templates /opt/microservices/templates
+COPY static /opt/microservices/static
+COPY requirements.txt /opt/microservices/
 
 EXPOSE 9080
 WORKDIR /opt/microservices
