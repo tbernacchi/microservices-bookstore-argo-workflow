@@ -40,7 +40,6 @@ pipeline {
               app = 'productpage ratings details mysql reviews'
           }
           steps{
-            script {
                 docker.withRegistry( '', registryCredential ) {  
                 sh """#!/bin/bash
                         for i in `echo $app`;do 
