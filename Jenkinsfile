@@ -9,7 +9,7 @@ pipeline {
         stage('Test') {
           steps {
             sh 'pwd' 
-            sh 'docker-compose --file=docker-compose.yml up'
+            sh 'docker-compose -d up'
             sh 'sleep 10' 
             sh 'docker exec -it -u root productpage curl --silent -X GET http://productpage:9080/health'
             sh 'docker exec -it -u root productpage curl --silent -X GET http://reviews:9080/health'
