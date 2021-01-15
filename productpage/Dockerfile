@@ -11,21 +11,19 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-
 FROM python:3.7.4-slim
 
-RUN mkdir -p /opt/microservices 
-ADD productpage /opt/microservices/ 
-RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt && apt update -y && apt install -y curl 
-RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt
+RUN mkdir -p /opt/microservices && mkdir -p /opt/microservices/tests/unit
+ADD . /opt/microservices/
+RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt && apt update -y && apt install -y curl
 
 ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
 
+ADD tests/unit /opt/microservices/tests/unit
+
 EXPOSE 9080
 WORKDIR /opt/microservices
-
-RUN python -m unittest discover /opt/microservices/tests/unit 
 
 USER 1
 
