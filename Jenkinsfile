@@ -16,6 +16,8 @@ pipeline {
             sh 'docker exec -it -u root productpage curl --silent -X GET http://ratings:9080/health'
             sh 'docker exec -it -u root productpage curl --silent -X GET http://details:9080/health'
             sh 'docker exec -it -u root productpage python -m unittest discover tests/unit'
+            sh 'sleep 10' 
+            sh 'docker-compose down'
           }
         }
         
