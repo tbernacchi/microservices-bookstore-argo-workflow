@@ -14,7 +14,7 @@
 
 FROM ruby:2.7-rc-slim
 
-COPY details.rb /opt/microservices/
+COPY ./details/details.rb /opt/microservices/
 
 ARG service_version
 ENV SERVICE_VERSION ${service_version:-v1}
