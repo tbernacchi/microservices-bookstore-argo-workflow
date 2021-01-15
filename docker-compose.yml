@@ -1,0 +1,75 @@
+version: '3.2'
+
+services:
+  frontend: 
+    build: 
+      context: ./productpage
+      dockerfile: Dockerfile
+    restart: always
+    container_name: productpage 
+    environment:
+    -  DETAILS_HOSTNAME=details
+    -  RATINGS_HOSTNAME=ratings
+    -  REVIEWS_HOSTNAME=reviews
+    ports:
+    - 9080:9080
+    networks:
+    - hash 
+    depends_on:
+      - "reviews"
+      - "details"
+      - "ratings"
+
+  reviews: 
+    build: 
+      context: ./reviews/reviews-wlpcfg
+      dockerfile: Dockerfile
+    restart: always
+    container_name: reviews
+    networks:
+    - hash 
+  
+  details: 
+    build: 
+      context: ./details
+      dockerfile: Dockerfile
+    restart: always
+    container_name: details
+    networks:
+    - hash 
+  
+  ratings: 
+    build: 
+      context: ./ratings
+      dockerfile: Dockerfile
+    restart: always
+    container_name: ratings
+    depends_on:
+    - "backend-sql"
+    environment: 
+    - MYSQL_DB_HOST=localhost
+    - MYSQL_DB_PORT=3306
+    - MYSQL_DB_USER=root
+    - MYSQL_DB_PASSWORD=hash123
+    networks:
+    - hash 
+  
+  backend-sql:
+    build: 
+      context: ./mysql
+      dockerfile: Dockerfile
+    restart: always 
+    container_name: mysql
+    ports:
+      - "3306:3306/tcp"
+    networks:
+    - hash 
+    environment:
+    - MYSQL_ROOT_PASSWORD=hash123
+
+networks:
+  hash:
+    driver: bridge
+
+volumes:
+  hash:
