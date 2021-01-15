@@ -7,15 +7,23 @@ pipeline {
     stages {
         
         stage('Test') {
-        agent {
-          dockerfile {
-            filename "productpage/Dockerfile"
-          }}
           steps {
-            sh 'echo Test'
+            sh 'docker-compose up'
+            sh 'sleep 10' 
+            sh 'docker exec -it -u root productpage curl --silent -X GET http://productpage:9080/health'
+            sh 'docker exec -it -u root productpage curl --silent -X GET http://reviews:9080/health'
+            sh 'docker exec -it -u root productpage curl --silent -X GET http://ratings:9080/health'
+            sh 'docker exec -it -u root productpage curl --silent -X GET http://details:9080/health'
+            sh 'docker exec -it -u root productpage python -m unittest discover tests/unit'
           }
         }
         
+        post {
+          always {
+            sh "docker-compose down -v"
+          } 
+        } 
+
         stage('Build') {
           steps { 
             sh "docker build --file=productpage/Dockerfile --tag $registry:productpage-$BUILD_NUMBER ."
