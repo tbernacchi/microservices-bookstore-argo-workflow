@@ -24,9 +24,9 @@ COPY ./productpage/test-requirements.txt /opt/microservices
 RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt 
 
 COPY ./productpage/productpage.py /opt/microservices/
-COPY ./productpage/tests/unit/* /opt/microservices/tests/unit
-COPY ./productpage/templates /opt/microservices/templates
-COPY ./productpage/static /opt/microservices/static
+COPY ./productpage/tests/unit/* /opt/microservices/tests/unit/
+COPY ./productpage/templates/* /opt/microservices/templates/
+COPY ./productpage/static/* /opt/microservices/static/
 COPY ./productpage/requirements.txt /opt/microservices/
 
 EXPOSE 9080
