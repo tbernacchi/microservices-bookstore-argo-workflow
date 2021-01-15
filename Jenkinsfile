@@ -10,7 +10,7 @@ pipeline {
           steps {
             sh 'pwd' 
             sh "cd ~jenkins/workspace/infra-dev/reviews/ && /opt/gradle/gradle-4.8.1/bin/gradle clean build && cd .."
-            sh 'docker-compose up'
+            sh 'docker-compose up -d'
             sh 'sleep 10' 
             sh 'docker exec -it -u root productpage curl --silent -X GET http://productpage:9080/health'
             sh 'docker exec -it -u root productpage curl --silent -X GET http://reviews:9080/health'
