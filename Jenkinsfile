@@ -8,6 +8,7 @@ pipeline {
         
         stage('Test') {
           steps {
+            sh 'pwd' 
             sh 'docker-compose up'
             sh 'sleep 10' 
             sh 'docker exec -it -u root productpage curl --silent -X GET http://productpage:9080/health'
