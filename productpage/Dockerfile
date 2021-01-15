@@ -21,6 +21,7 @@ ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
 
 ADD tests/unit /opt/microservices/tests/unit
+COPY test-requirements.txt /opt/microservices
 RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt 
 
 EXPOSE 9080
