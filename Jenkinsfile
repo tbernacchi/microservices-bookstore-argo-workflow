@@ -15,7 +15,7 @@ pipeline {
             sh 'docker exec -u root productpage curl --silent -X GET http://productpage:9080/health'
             sh 'docker exec -u root productpage curl --silent -X GET http://ratings:9080/health'
             sh 'docker exec -u root productpage curl --silent -X GET http://details:9080/health'
-            sh 'docker exec -u root productpage curl --silent -X GET http://reviews:9080/health'
+            sh 'docker exec -u root productpage curl -s -o /dev/null -w %{http_code} http://reviews:9080/health'
             sh 'docker exec -u root productpage python -m unittest discover tests/unit'
             sh 'sleep 10' 
             sh 'docker-compose down'
