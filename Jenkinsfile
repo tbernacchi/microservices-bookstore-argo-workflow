@@ -18,12 +18,6 @@ pipeline {
           }
         }
         
-        post {
-          always {
-            sh "docker-compose down -v"
-          } 
-        } 
-
         stage('Build') {
           steps { 
             sh "docker build --file=productpage/Dockerfile --tag $registry:productpage-$BUILD_NUMBER ."
@@ -45,6 +39,11 @@ pipeline {
             steps {
                 sh 'echo Deploy'
             }
+        }
+    }
+    post {
+      always {
+        sh "docker-compose down -v"
         }
     }
 }
