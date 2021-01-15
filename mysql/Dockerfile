@@ -15,4 +15,4 @@
 FROM mysql:8.0.17
 # MYSQL_ROOT_PASSWORD must be supplied as an env var
 
-COPY ./mysql/mysqldb-init.sql /docker-entrypoint-initdb.d
+COPY ./mysqldb-init.sql /docker-entrypoint-initdb.d
