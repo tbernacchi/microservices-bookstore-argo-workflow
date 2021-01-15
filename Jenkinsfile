@@ -41,15 +41,11 @@ pipeline {
           steps{
                 script { 
                 docker.withRegistry( '', registryCredential ) {  
-                  sh """#!/bin/bash
-                        app = "productpage ratings details mysql reviews"
-                        for i in `echo $app`;do 
-                          docker push $registry:$i-$BUILD_NUMBER
-                        done
-                   """ }
+                  sh 'for i in `productpage ratings details mysql reviews`;do docker push $registry:$i-$BUILD_NUMBER;done'
+                  }
                 }
-            }
-          }
+          } 
+        }
         
         stage('Deploy') {
             steps {
