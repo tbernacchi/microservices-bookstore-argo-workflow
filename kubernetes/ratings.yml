@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ratings
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: ratings
+  template:
+    metadata:
+      labels:
+        name: ratings
+    spec:
+      containers:
+      - name: ratings
+        image: index.docker.io/{{ image-ratings }} 
+        ports:
+        - containerPort: 9080
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: DB_TYPE 
+          value: mysql
+        - name: MYSQL_DB_HOST
+          value: localhost
+        - name: MYSQL_DB_PASSWORD
+          value: hash123
+        - name: MYSQL_DB_PORT
+          value: "3306"
+        - name: MYSQL_DB_USER
+          value: root
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ratings
+spec:
+  ports:
+  - name: "ratings"
+    port: 9080
+    targetPort: 9080
+  selector:
+    name: ratings
+status:
+  loadBalancer: {}

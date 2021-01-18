@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: reviews
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: reviews
+  template:
+    metadata:
+      labels:
+        name: "reviews"
+    spec:
+      containers:
+      - name: reviews
+        image: index.docker.io/{{ image-reviews }} 
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: RATINGS_HOSTNAME
+          value: ratings
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews
+spec:
+  ports:
+  - name: "reviews"
+    port: 9080
+    targetPort: 9080
+  selector:
+    name: reviews
+status:
+  loadBalancer: {}

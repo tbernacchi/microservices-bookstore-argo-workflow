@@ -1,0 +1,36 @@
+- hosts: localhost
+  tasks:
+  - name: Deploy productpage
+    k8s:
+      state: present
+      validate_certs: no
+      namespace: default
+      definition: "{{ lookup('template', 'productpage.yml') | from_yaml }}"
+  
+  - name: Deploy ratings
+    k8s:
+      state: present
+      validate_certs: no
+      namespace: default
+      definition: "{{ lookup('template', 'ratings.yml') | from_yaml }}"
+
+  - name: Deploy details
+    k8s:
+      state: present
+      validate_certs: no
+      namespace: default
+      definition: "{{ lookup('template', 'details.yml') | from_yaml }}"
+  
+  - name: Deploy mysql
+    k8s:
+      state: present
+      validate_certs: no
+      namespace: default
+      definition: "{{ lookup('template', 'mysql.yml') | from_yaml }}"
+  
+  - name: Deploy reviews
+    k8s:
+      state: present
+      validate_certs: no
+      namespace: default
+      definition: "{{ lookup('template', 'reviews.yml') | from_yaml }}"

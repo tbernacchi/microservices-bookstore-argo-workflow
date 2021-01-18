@@ -38,24 +38,69 @@ pipeline {
           environment {
               registryCredential = 'dockerhub'
           }
-          steps{
+          steps {
                 script { 
-                docker.withRegistry( '', registryCredential ) {  
-                  sh '''for i in `echo productpage ratings details mysql reviews`;do 
-                          docker push $registry:$i-$BUILD_NUMBER;
-                        done
-                    '''
+                  docker.withRegistry( '', registryCredential ) {  
+                    sh '''for i in `echo productpage ratings details mysql reviews`;do 
+                            docker push $registry:$i-$BUILD_NUMBER;
+                          done
+                        '''
                   }
                 }
           } 
         }
         
-        stage('Deploy') {
+        stage('Deploy to development') {
+            when {
+                branch 'development'
+            }
             steps {
-                sh 'echo Deploy'
+                  sh "echo branch development"
+                }
+          
+            post {
+              success {
+                echo "Successfully deployed to development"
+              }
+            
+              failure { 
+                echo "Failed deploying to development"
+              }
             }
         }
-    }
+
+        stage('Deploy to Production') {
+            when {
+                branch 'master'
+            }
+            steps {
+                kubernetesDeploy (kubeconfigId: 'kubernetes-gcloud',  enableConfigSubstitution: true) {
+                  script {
+                    image-productpage = $registry:productpage-$BUILD_NUMBER
+                    image-details = $registry:details-$BUILD_NUMBER
+                    image-ratings = $registry:ratings-$BUILD_NUMBER
+                    image-mysql = $registry:mysql-$BUILD_NUMBER
+                    image-reviews = $registry:reviews-$BUILD_NUMBER
+                    sh "ansible-playbook kubernetes/playbook.yml 
+                        --extra-vars \"image-productpage=${image-productpage}\" 
+                        --extra-vars \"image-details=${image-details}\" 
+                        --extra-vars \"image-ratings=${image-ratings}\"
+                        --extra-vars \"image-mysql=${image-mysql}\" 
+                        --extra-vars \"image-reviews=${image-reviews}\""
+                  } 
+                }
+            }
+            
+            post {
+                success {
+                    echo "Successfully deployed to Production"
+                }
+                failure {
+                    echo "Failed deploying to Production"
+                }
+            }
+        }
+
     post {
       always {
         sh "docker-compose down -v"
