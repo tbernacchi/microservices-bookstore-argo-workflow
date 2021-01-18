@@ -51,29 +51,7 @@ pipeline {
           } 
         }
         
-        stage('Deploy to development') {
-            when {
-                branch 'development'
-            }
-            steps {
-                  sh "echo branch development"
-                }
-          
-            post {
-              success {
-                echo "Successfully deployed to development"
-              }
-            
-              failure { 
-                echo "Failed deploying to development"
-              }
-            }
-        }
-
         stage('Deploy to Production') {
-            when {
-                branch 'master'
-            }
             steps {
                 kubernetesDeploy (kubeconfigId: 'kubernetes-gcloud',  enableConfigSubstitution: true) {
                   script {
