@@ -53,7 +53,6 @@ pipeline {
         
         stage('Deploy to Production') {
             steps {
-                kubernetesDeploy (kubeconfigId: 'kubernetes-gcloud',  enableConfigSubstitution: true) {
                   script {
                     "image-productpage =" "$registry:"productpage"-$BUILD_NUMBER"
                     "image-details =" "$registry:"details"-$BUILD_NUMBER"
@@ -62,7 +61,6 @@ pipeline {
                     "image-reviews =" "$registry:"reviews"-$BUILD_NUMBER"
                     sh "ansible-playbook kubernetes/playbook.yml --extra-vars \"image-productpage=${image-productpage}\" --extra-vars \"image-details=${image-details}\" --extra-vars \"image-ratings=${image-ratings}\" --extra-vars \"image-mysql=${image-mysql}\" --extra-vars \"image-reviews=${image-reviews}\""
                   } 
-                }
             }
             
             post {
