@@ -81,12 +81,7 @@ pipeline {
                     image-ratings = "$registry:"ratings"-$BUILD_NUMBER"
                     image-mysql = "$registry:"mysql"-$BUILD_NUMBER"
                     image-reviews = "$registry:"reviews"-$BUILD_NUMBER"
-                    sh "ansible-playbook kubernetes/playbook.yml \n
-                        --extra-vars \"image-productpage=${image-productpage}\" 
-                        --extra-vars \"image-details=${image-details}\" 
-                        --extra-vars \"image-ratings=${image-ratings}\"
-                        --extra-vars \"image-mysql=${image-mysql}\" 
-                        --extra-vars \"image-reviews=${image-reviews}\""
+                    sh "ansible-playbook kubernetes/playbook.yml --extra-vars \"image-productpage=${image-productpage}\" --extra-vars \"image-details=${image-details}\" --extra-vars \"image-ratings=${image-ratings}\" --extra-vars \"image-mysql=${image-mysql}\" --extra-vars \"image-reviews=${image-reviews}\""
                   } 
                 }
             }
