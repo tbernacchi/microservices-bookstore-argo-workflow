@@ -54,11 +54,11 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                   script {
-                    "image-productpage =" "$registry:"productpage"-$BUILD_NUMBER"
-                    "image-details =" "$registry:"details"-$BUILD_NUMBER"
-                    "image-ratings =" "$registry:"ratings"-$BUILD_NUMBER"
-                    "image-mysql =" "$registry:"mysql"-$BUILD_NUMBER"
-                    "image-reviews =" "$registry:"reviews"-$BUILD_NUMBER"
+                     image-productpage = "$registry:"productpage"-$BUILD_NUMBER"
+                     image-details = "$registry:"details"-$BUILD_NUMBER"
+                     image-ratings = "$registry:"ratings"-$BUILD_NUMBER"
+                     image-mysql = "$registry:"mysql"-$BUILD_NUMBER"
+                     image-reviews = "$registry:"reviews"-$BUILD_NUMBER"
                     sh "ansible-playbook kubernetes/playbook.yml --extra-vars \"image-productpage=${image-productpage}\" --extra-vars \"image-details=${image-details}\" --extra-vars \"image-ratings=${image-ratings}\" --extra-vars \"image-mysql=${image-mysql}\" --extra-vars \"image-reviews=${image-reviews}\""
                   } 
             }
