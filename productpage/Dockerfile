@@ -11,23 +11,27 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-FROM python:3.7.4-slim
+FROM python:3.10-slim
 
-RUN mkdir -p /opt/microservices && mkdir -p /opt/microservices/tests/unit
-COPY ./productpage/requirements.txt /opt/microservices/
-RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt && apt update -y && apt install -y curl
+RUN mkdir -p /opt/microservices && mkdir -p /opt/microservices/tests/unit && apt update -y && apt install -y curl 
+COPY ./requirements.txt /opt/microservices/
+
+#RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt && apt update -y && apt install -y curl
+#RUN pip install --upgrade pip 
+RUN pip install --upgrade pip setuptools wheel 
+RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt
 
 ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
 
-COPY ./productpage/test-requirements.txt /opt/microservices
+COPY ./test-requirements.txt /opt/microservices
 RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt 
 
-COPY ./productpage/productpage.py /opt/microservices/
-COPY ./productpage/tests/unit/* /opt/microservices/tests/unit/
-COPY ./productpage/templates/* /opt/microservices/templates/
-COPY ./productpage/static/* /opt/microservices/static/
-COPY ./productpage/requirements.txt /opt/microservices/
+COPY productpage.py /opt/microservices/
+COPY ./tests/unit/* /opt/microservices/tests/unit/
+COPY ./templates/* /opt/microservices/templates/
+COPY ./static/* /opt/microservices/static/
+COPY ./requirements.txt /opt/microservices/
 
 EXPOSE 9080
 WORKDIR /opt/microservices

@@ -12,13 +12,13 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 
-FROM websphere-liberty:19.0.0.6-javaee8
+FROM openliberty/open-liberty:latest 
 
 ENV SERVERDIRNAME reviews
 
 COPY ./servers/LibertyProjectServer /opt/ibm/wlp/usr/servers/defaultServer/
 
-RUN /opt/ibm/wlp/bin/installUtility install  --acceptLicense /opt/ibm/wlp/usr/servers/defaultServer/server.xml
+#RUN /opt/ibm/wlp/bin/installUtility install  --acceptLicense /opt/ibm/wlp/usr/servers/defaultServer/server.xml
 
 #TODO document that
 ARG service_version
