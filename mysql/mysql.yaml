@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: index.docker.io/{{ image-mysql }} 
+        image: index.docker.io/ambrosiaaaaa/my-mysql-image:{{image-tag}}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3306

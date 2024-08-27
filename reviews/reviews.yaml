@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: reviews
-        image: index.docker.io/{{ image-reviews }} 
+        image: index.docker.io/ambrosiaaaaa/my-reviews-image:{{image-tag}}
         imagePullPolicy: IfNotPresent
         env:
         - name: RATINGS_HOSTNAME

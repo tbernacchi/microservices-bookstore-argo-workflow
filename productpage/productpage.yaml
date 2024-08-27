@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: productpage
-        image: index.docker.io/tadeuuuuu/{{ image-productpage }} 
+        image: index.docker.io/ambrosiaaaaa/my-productpage-image:{{image-tag}}
         imagePullPolicy: IfNotPresent
         env:
         - name: DETAILS_HOSTNAME
