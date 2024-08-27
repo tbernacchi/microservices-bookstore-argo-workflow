@@ -7,4 +7,3 @@ images:
   - name: index.docker.io/ambrosiaaaaa/my-reviews-image
     newName: index.docker.io/ambrosiaaaaa/my-reviews-image
     newTag: "v0.0.5"
-
