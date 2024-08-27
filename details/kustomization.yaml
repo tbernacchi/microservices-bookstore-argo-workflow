@@ -6,4 +6,4 @@ resources:
 images:
   - name: index.docker.io/ambrosiaaaaa/my-details-image
     newName: index.docker.io/ambrosiaaaaa/my-details-image
-    newTag: "{{image-tag}}"
+    newTag: "v0.0.5"
