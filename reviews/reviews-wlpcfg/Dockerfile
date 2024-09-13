@@ -17,5 +17,5 @@ ENV ENABLE_RATINGS ${enable_ratings:-false}
 ENV STAR_COLOR ${star_color:-black}
 
 # Comando para iniciar o servidor
-CMD ["/opt/ibm/wlp/bin/server", "run", "defaultServer"]
+CMD ["/opt/ol/wlp/bin/server", "run", "defaultServer"]
 
