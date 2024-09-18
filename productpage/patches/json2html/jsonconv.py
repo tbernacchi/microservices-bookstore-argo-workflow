@@ -17,7 +17,7 @@ LICENSE: MIT
 --------
 """
 
-import sys html 
+import sys
 
 if sys.version_info[:2] < (2, 7):
     from ordereddict import OrderedDict
