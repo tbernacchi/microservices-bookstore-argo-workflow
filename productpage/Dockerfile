@@ -11,21 +11,21 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-FROM python:3.10-slim
+FROM python:3.8.20-slim 
 
 RUN mkdir -p /opt/microservices && mkdir -p /opt/microservices/tests/unit && apt update -y && apt install -y curl 
 COPY ./requirements.txt /opt/microservices/
 
-#RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt && apt update -y && apt install -y curl
-#RUN pip install --upgrade pip 
+COPY ./patches/json2html/jsonconv.py /usr/local/lib/python3.8/site-packages/json2html/jsonconv.py
+
 RUN pip install --upgrade pip setuptools wheel 
 RUN pip install --no-cache-dir -r /opt/microservices/requirements.txt
 
 ARG flood_factor
 ENV FLOOD_FACTOR ${flood_factor:-0}
 
-COPY ./test-requirements.txt /opt/microservices
-RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt 
+#COPY ./test-requirements.txt /opt/microservices
+#RUN pip install --no-cache-dir -r /opt/microservices/test-requirements.txt 
 
 COPY productpage.py /opt/microservices/
 COPY ./tests/unit/* /opt/microservices/tests/unit/

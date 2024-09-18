@@ -1,4 +1,8 @@
+#!.venv/bin/python3.8
+
 from __future__ import print_function
+from _collections_abc import Mapping
+
 from flask_bootstrap import Bootstrap
 from flask import Flask, request, session, render_template, redirect, url_for
 from flask import _request_ctx_stack as stack
