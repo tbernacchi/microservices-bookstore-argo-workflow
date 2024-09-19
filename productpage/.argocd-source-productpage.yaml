@@ -1,0 +1,3 @@
+kustomize:
+  images:
+  - ambrosiaaaaa/my-productpage-image:v0.0.8
