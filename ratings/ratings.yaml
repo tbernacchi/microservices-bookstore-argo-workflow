@@ -21,16 +21,27 @@ spec:
         - containerPort: 9080
         imagePullPolicy: IfNotPresent
         env:
-        - name: DB_TYPE 
-          value: mysql
-        - name: MYSQL_DB_HOST
-          value: localhost
-        - name: MYSQL_DB_PASSWORD
-          value: hash123
-        - name: MYSQL_DB_PORT
-          value: "3306"
-        - name: MYSQL_DB_USER
-          value: root
+          - name: MYSQL_DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: ratings
+                key: db_host
+          - name: MYSQL_DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: ratings
+                key: db_port
+          - name: MYSQL_DB_USER
+            valueFrom:
+              configMapKeyRef:
+                name: ratings
+                key: user
+
+          - name: MYSQL_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: ratings
+                key: db_pass
       restartPolicy: Always
 ---
 apiVersion: v1
