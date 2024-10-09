@@ -6,4 +6,4 @@ resources:
 images:
   - name: index.docker.io/ambrosiaaaaa/my-productpage-image
     newName: index.docker.io/ambrosiaaaaa/my-productpage-image
-    newTag: "v0.0.8"
+    newTag: "v0.1.2"
