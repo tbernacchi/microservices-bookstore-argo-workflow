@@ -20,9 +20,11 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: DETAILS_HOSTNAME
-          value: details
+          value: details.details.svc.cluster.local
+        - name: RATINGS_HOSTNAME
+          value: ratings.ratings.svc.cluster.local
         - name: REVIEWS_HOSTNAME
-          value: reviews
+          value: reviews.reviews.svc.cluster.local
         ports:
         - containerPort: 9080
         securityContext:
@@ -41,3 +43,4 @@ spec:
     targetPort: 9080
   selector:
     name: productpage
+
