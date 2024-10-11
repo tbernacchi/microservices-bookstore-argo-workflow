@@ -20,11 +20,11 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: DETAILS_HOSTNAME
-          value: details.details.
+          value: details.details
         - name: RATINGS_HOSTNAME
-          value: ratings.ratings.
+          value: ratings.ratings
         - name: REVIEWS_HOSTNAME
-          value: reviews.reviews.
+          value: reviews.reviews
         - name: SERVICES_DOMAIN
           value: "svc.cluster.local"  
         ports:
