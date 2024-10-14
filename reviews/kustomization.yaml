@@ -6,4 +6,4 @@ resources:
 images:
   - name: index.docker.io/ambrosiaaaaa/my-reviews-image
     newName: index.docker.io/ambrosiaaaaa/my-reviews-image
-    newTag: "v0.1.0"
+    newTag: "v0.1.1"
