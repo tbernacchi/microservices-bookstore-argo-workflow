@@ -1,5 +1,5 @@
 <div align=>
-	<img align="center" src=/../.github/assets/img/argo.png>
+	<img align="center" src=../.github/assets/img/argo.png>
 </div> 
 
 ## Service account + Workflow templates
