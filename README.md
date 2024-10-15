@@ -3,7 +3,7 @@
 >  This project contains a simple app based in four microservices containing infos about a book. The main goal of this repo was to practice and understand [Argo Workflows](https://argoproj.github.io/workflows/). 
 
 <div align=>
-        <img align="right" src=/.github/assets/img/argo-logo.png>
+        <img align="right" src=/.github/assets/img/argo-workflow.png>
 </div>
 
 The services that the application consists are:
