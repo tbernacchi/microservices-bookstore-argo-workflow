@@ -81,6 +81,9 @@ service_dict = {
     "reviews": reviews,
 }
 
+
+print("REVIEWS HOSTNAME: ", reviewsHostname)
+
 # A note on distributed tracing:
 #
 # Although Istio proxies are able to automatically send spans, they need some
@@ -328,6 +331,7 @@ def getProductReviews(product_id, headers):
     for _ in range(2):
         try:
             url = reviews['name'] + "/" + reviews['endpoint'] + "/" + str(product_id)
+            print("URL da requisição:", url)  # Imprime a URL
             res = requests.get(url, headers=headers, timeout=3.0)
         except BaseException:
             res = None

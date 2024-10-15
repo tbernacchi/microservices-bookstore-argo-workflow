@@ -18,4 +18,3 @@ ENV STAR_COLOR ${star_color:-black}
 
 # Comando para iniciar o servidor
 CMD ["/opt/ol/wlp/bin/server", "run", "defaultServer"]
-
