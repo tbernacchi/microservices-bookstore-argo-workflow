@@ -8,4 +8,6 @@ Argo Workflows need a service account in the respective namespace where the work
 
 #
 
-The `rbac.yaml` creates a `ServiceAccount` with respective `Role` and `RoleBinding`;  The `workflow` directory contains all the workflows template files for each application.
+The `rbac.yaml` creates a `ServiceAccount` with respective `Role` and `RoleBinding`;
+
+The `workflow` directory contains all the workflows template files for each application.
