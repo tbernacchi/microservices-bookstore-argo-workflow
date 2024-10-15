@@ -1,10 +1,8 @@
 # microservices-bookstore-argo-workflow 
 
->  This project contains a simple app based in four microservices containing infos about a book. The main goal of this repo was to practice and understand [Argo Workflows](https://argoproj.github.io/workflows/). It came from this [repo](https://github.com/hashlab/hiring/tree/master/challenges/pt-br/infra-dev-challenge).
+>  This project contains a simple app based in four microservices containing infos about a book. The main goal of this repo was to practice and understand [Argo Workflows](https://argoproj.github.io/workflows/). 
 
-<div align=>
-	<img align="right" width="200px" src=/.github/assets/img/argo-logo.png>
-</div>
+![argo](./github/assets/img/argo-logo.png)
 
 The services that the application consists are:
 
@@ -17,8 +15,6 @@ Databases:
 - mongodb
 - mysql
 
+Original [repo](https://github.com/hashlab/hiring/tree/master/challenges/pt-br/infra-dev-challenge).
 
-Simple diagram (Only calls, not cover databases)
-
-![Diagram](/.github/assets/img/bookinfo.png)
 
