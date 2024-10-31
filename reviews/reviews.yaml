@@ -5,18 +5,14 @@ metadata:
   name: reviews
   namespace: reviews
 spec:
-  replicas: 5
+  replicas: 3
   strategy:
     canary:
       steps:
       - setWeight: 20
-      - pause: {}
-      - setWeight: 40
-      - pause: {duration: 10}
-      - setWeight: 60
-      - pause: {duration: 10}
-      - setWeight: 80
-      - pause: {duration: 10}
+      - pause: { duration: 30s }
+      - setWeight: 50
+      - pause: { duration: 1m }
   selector:
     matchLabels:
       name: reviews
