@@ -2,7 +2,7 @@
 	<img align="center" src=../.github/assets/img/argo.png>
 </div> 
 
-## Argo-workflow 
+## argo-workflow 
 
 To install argo-workflow I've followed the [documentation](https://argo-workflows.readthedocs.io/en/latest/quick-start/)
 
@@ -32,8 +32,8 @@ The `workflow` directory contains all the workflows template files for each appl
 
 
 # argo-cli
-https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/
-https://github.com/argoproj/argo-workflows/releases/
+https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/ 
+https://github.com/argoproj/argo-workflows/releases/ 
 
 Example:
 
@@ -41,9 +41,9 @@ Example:
 argo submit --from workflowtemplate/template-que-funciona -p repo="https://github.com/tbernacchi/infra-dev-challenge.git" -p revision="main" -p dockerfile-path="details" -p oci-image="ambrosiaaaaa/my-details-image" -p oci-tag="v0.0.2" -p oci-registry="docker.io" -p push-image="true" -n playground
 ```
 
-## Argo-CD
+## argo-CD
 
-To install argo-cd I've followed the [documentation](https://argo-cd.readthedocs.io/en/stable/getting_started/).
+To install argo-cd I've followed the [https://argo-cd.readthedocs.io/en/stable/getting_started/](https://argo-cd.readthedocs.io/en/stable/getting_started/).
 
 ```
 kubectl create namespace argocd
@@ -57,7 +57,9 @@ I've use the `ingress-argocd.yaml`.
 
 ```
 kubectl edit ing/argocd-server-ingress -n argocd
+```
 
+```
 containers:
 - args:
   - /usr/local/bin/argocd-server
@@ -65,7 +67,7 @@ containers:
   - /argocd
 ```
 
-[Reference](https://argo-cd.readthedocs.io/en/latest/operator-manual/ingress/)
+[https://argo-cd.readthedocs.io/en/latest/operator-manual/ingress/](https://argo-cd.readthedocs.io/en/latest/operator-manual/ingress/)
 
 UI password: 
 
@@ -73,7 +75,7 @@ UI password:
 kubectl get secret/argocd-initial-admin-secret -n argocd -o jsonpath='{.data.password}' | base64 --decode
 ```
 
-# Argo-rollouts
+# argo-rollouts
 
 To enable the argo-rollouts on the UI I've use this extension: [https://github.com/argoproj-labs/rollout-extension](https://github.com/argoproj-labs/rollout-extension)
 
