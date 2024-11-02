@@ -4,7 +4,7 @@
 
 ## argo-workflow 
 
-To install argo-workflow I've followed the [documentation](https://argo-workflows.readthedocs.io/en/latest/quick-start/)
+To install argo-workflow I've followed the documentation [https://argo-workflows.readthedocs.io/en/latest/quick-start/](https://argo-workflows.readthedocs.io/en/latest/quick-start/)
 
 ```
 kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.8/install.yaml
