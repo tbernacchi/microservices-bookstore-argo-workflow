@@ -10,11 +10,13 @@ To install argo-workflow I've followed the [documentation](https://argo-workflow
 kubectl apply -n argo -f https://github.com/argoproj/argo-workflows/releases/download/v3.5.8/install.yaml
 ```
 
-I've used this ingress for it `ingress-argo-workflow.yaml` and adjust the deployment to meet my needs to access the UI on my domain `mykubernetes.com/argo`: 
+I've used this ingress `ingress-argo-workflow.yaml` and adjust the deployment to meet my needs to access the UI on `mykubernetes.com/argo`: 
 
 ```
 kubectl edit deploy/argo-server -n argo
+```
 
+```
 - args:
 - --auth-mode=server
   env:
@@ -27,8 +29,8 @@ kubectl edit deploy/argo-server -n argo
 
 Argo Workflows need a service account in the respective namespace where the workloads and builds it's going to run in order to work properly. This service account needs some permissions to manage workflows, interact with pods and etctera. More info you can find [here](https://argo-workflows.readthedocs.io/en/latest/service-accounts/).
 
-The `rbac.yaml` creates a `ServiceAccount` with respective `Role` and `RoleBinding`;
-The `workflow` directory contains all the workflows template files for each application.
+* The `rbac.yaml` creates a `ServiceAccount` with respective `Role` and `RoleBinding`; 
+* The `workflow` directory contains all the workflows template files for each application.
 
 
 # argo-cli
@@ -41,7 +43,7 @@ Example:
 argo submit --from workflowtemplate/template-que-funciona -p repo="https://github.com/tbernacchi/infra-dev-challenge.git" -p revision="main" -p dockerfile-path="details" -p oci-image="ambrosiaaaaa/my-details-image" -p oci-tag="v0.0.2" -p oci-registry="docker.io" -p push-image="true" -n playground
 ```
 
-## argo-CD
+## argo-cd
 
 To install argo-cd I've followed the [https://argo-cd.readthedocs.io/en/stable/getting_started/](https://argo-cd.readthedocs.io/en/stable/getting_started/).
 
@@ -67,6 +69,7 @@ containers:
   - /argocd
 ```
 
+Reference:
 [https://argo-cd.readthedocs.io/en/latest/operator-manual/ingress/](https://argo-cd.readthedocs.io/en/latest/operator-manual/ingress/)
 
 UI password: 
