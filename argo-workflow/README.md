@@ -34,7 +34,7 @@ Argo Workflows need a service account in the respective namespace where the work
 
 
 ## argo-cli
-[https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/](https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/) 
+[https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/](https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/)<br>
 [https://github.com/argoproj/argo-workflows/releases/](https://github.com/argoproj/argo-workflows/releases/) 
 
 Example:
@@ -124,3 +124,7 @@ spec:
           emptyDir: {}
 ```
 
+Cool stuff about Argo on Youtube:
+
+[https://www.youtube.com/watch?v=vpWQeoaiRM4&ab_channel=DevOpsToolkit](https://www.youtube.com/watch?v=vpWQeoaiRM4&ab_channel=DevOpsToolkit)<br>
+[https://www.youtube.com/watch?v=UMaivwrAyTA&ab_channel=DevOpsToolkit](https://www.youtube.com/watch?v=UMaivwrAyTA&ab_channel=DevOpsToolkit)
