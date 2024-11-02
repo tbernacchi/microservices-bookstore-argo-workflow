@@ -25,7 +25,7 @@ kubectl edit deploy/argo-server -n argo
 ```
 
 
-## Service account + Workflow templates
+## service account + workflow templates
 
 Argo Workflows need a service account in the respective namespace where the workloads and builds it's going to run in order to work properly. This service account needs some permissions to manage workflows, interact with pods and etctera. More info you can find [here](https://argo-workflows.readthedocs.io/en/latest/service-accounts/).
 
@@ -34,8 +34,8 @@ Argo Workflows need a service account in the respective namespace where the work
 
 
 # argo-cli
-https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/ 
-https://github.com/argoproj/argo-workflows/releases/ 
+[https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/](https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/) 
+[https://github.com/argoproj/argo-workflows/releases/](https://github.com/argoproj/argo-workflows/releases/) 
 
 Example:
 
