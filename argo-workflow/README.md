@@ -2,7 +2,7 @@
 	<img align="center" src=../.github/assets/img/argo.png>
 </div> 
 
-## argo-workflow 
+# argo-workflow 
 
 To install argo-workflow I've followed the documentation [https://argo-workflows.readthedocs.io/en/latest/quick-start/](https://argo-workflows.readthedocs.io/en/latest/quick-start/)
 
@@ -33,7 +33,7 @@ Argo Workflows need a service account in the respective namespace where the work
 * The `workflow` directory contains all the workflows template files for each application.
 
 
-# argo-cli
+## argo-cli
 [https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/](https://argo-workflows.readthedocs.io/en/latest/walk-through/argo-cli/) 
 [https://github.com/argoproj/argo-workflows/releases/](https://github.com/argoproj/argo-workflows/releases/) 
 
@@ -43,7 +43,7 @@ Example:
 argo submit --from workflowtemplate/template-que-funciona -p repo="https://github.com/tbernacchi/infra-dev-challenge.git" -p revision="main" -p dockerfile-path="details" -p oci-image="ambrosiaaaaa/my-details-image" -p oci-tag="v0.0.2" -p oci-registry="docker.io" -p push-image="true" -n playground
 ```
 
-## argo-cd
+# argo-cd
 
 To install argo-cd I've followed the [https://argo-cd.readthedocs.io/en/stable/getting_started/](https://argo-cd.readthedocs.io/en/stable/getting_started/).
 
