@@ -124,7 +124,7 @@ spec:
           emptyDir: {}
 ```
 
-* Cool stuff about Argo on YouTube:
+Cool stuff about Argo on YouTube:
 
 [https://www.youtube.com/watch?v=vpWQeoaiRM4&ab_channel=DevOpsToolkit](https://www.youtube.com/watch?v=vpWQeoaiRM4&ab_channel=DevOpsToolkit)<br>
 [https://www.youtube.com/watch?v=UMaivwrAyTA&ab_channel=DevOpsToolkit](https://www.youtube.com/watch?v=UMaivwrAyTA&ab_channel=DevOpsToolkit)
