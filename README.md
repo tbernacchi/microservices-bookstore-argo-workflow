@@ -22,4 +22,4 @@ Simple diagram (Only calls, not cover databases)
 
 ![Diagram](/.github/assets/img/bookinfo.png)
 
-You cand find the original repo [here](https://github.com/hashlab/hiring/tree/master/challenges/pt-br/infra-dev-challenge).
+You cand find the original repo [here](https://istio.io/v1.12/docs/examples/bookinfo/).
