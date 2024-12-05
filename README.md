@@ -22,4 +22,4 @@ Simple diagram (Only calls, not cover databases)
 
 ![Diagram](/.github/assets/img/bookinfo.png)
 
-You cand find the original repo [here](https://istio.io/v1.12/docs/examples/bookinfo/).
+You cand find more info about this app [here](https://istio.io/v1.12/docs/examples/bookinfo/).
