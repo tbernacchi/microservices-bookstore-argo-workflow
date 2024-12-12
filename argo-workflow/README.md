@@ -58,7 +58,7 @@ If the Argo CD UI is available under a non-root path (e.g. /argo-cd instead of /
 I've use the `ingress-argocd.yaml`.
 
 ```
-kubectl edit ing/argocd-server-ingress -n argocd
+kubectl edit deploy/argocd-server -n argocd
 ```
 
 ```
